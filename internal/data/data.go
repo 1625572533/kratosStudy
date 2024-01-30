@@ -11,7 +11,7 @@ import (
 )
 
 // ProviderSet is data providers.
-var ProviderSet = wire.NewSet(NewData, NewGreeterRepo, NewGormDB, NewStudentRepo)
+var ProviderSet = wire.NewSet(NewData, NewGreeterRepo, NewGormDB, NewStudentRepo,NewBookRepo)
 
 // Data .
 // 第一步引入gorm.DB

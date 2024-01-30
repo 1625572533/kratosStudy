@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package api.helloworld.v1;
+import "google/api/annotations.proto";
+
+option go_package = "student/api/helloworld/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.helloworld.v1";
+
+service Book {
+	rpc GetBook(GetBooksRequest) returns (GetBooksReply){
+        option(google.api.http) = {
+            get: "/book/{id}",
+        };
+    }
+}
+
+message GetBooksRequest{
+	int32 id = 1;
+}
+
+message GetBooksReply{
+	int32 Id = 1;
+	string Name = 2;
+	string Price =3;
+	string Author = 4;
+	int32 Sales = 5;
+	int32 Stock = 6;
+	string ImaPath = 7;
+}
+

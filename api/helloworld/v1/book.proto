@@ -1,22 +1,18 @@
 syntax = "proto3";
 
 package api.helloworld.v1;
-import "google/api/annotations.proto";
+import "gogoproto/gogo.proto";
 
 option go_package = "student/api/helloworld/v1;v1";
 option java_multiple_files = true;
 option java_package = "api.helloworld.v1";
 
 service Book {
-	rpc GetBook(GetBooksRequest) returns (GetBooksReply){
-        option(google.api.http) = {
-            get: "/book/{id}",
-        };
-    }
+
 }
 
 message GetBooksRequest{
-	int32 id = 1;
+	int32 id = 1 [(gogoproto.jsontag) = "id", (gogoproto.moretags) = "uri:\"id\" validate:\"required\""];
 }
 
 message GetBooksReply{

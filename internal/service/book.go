@@ -7,6 +7,7 @@ import (
 	"student/internal/biz"
 
 	"github.com/go-kratos/kratos/v2/log"
+	"encoding/json"
 )
 
 type BookService struct {
@@ -23,6 +24,8 @@ func NewBookService(book *biz.BookUsecase,logger log.Logger) *BookService {
 }
 
 func (uc *BookService) GetBook(ctx context.Context, req *pb.GetBooksRequest) (*pb.GetBooksReply, error) {
+	val,_:=json.Marshal(req)
+	uc.log.Infof("GetBook req: ",string(val))
 	book,err := uc.book.GetOne(ctx,req.Id)
 	if err!=nil{
 		return nil,err
